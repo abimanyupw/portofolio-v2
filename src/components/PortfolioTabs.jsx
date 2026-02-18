@@ -24,7 +24,7 @@ export default function PortfolioTabs() {
   return (
     <div
       className="relative min-h-screen bg-[#005f73] text-white py-24 px-[5%] overflow-hidden font-sans"
-      id="portfolio"
+      id="project"
     >
       {/* 1. Background Gradient Decor (Tema Biru Gelap & Teal) */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#001219] via-[#005f73] to-[#0a9396]"></div>
