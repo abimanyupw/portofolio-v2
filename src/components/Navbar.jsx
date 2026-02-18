@@ -23,49 +23,51 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed w-full z-[999] transition-all duration-300 px-3 py-2 md:px-10 ${
-        scrolled ? "top-0" : "top-1"
+        scrolled ? "top-0" : "top-2"
       }`}
     >
-      {/* NAVBAR CONTAINER */}
+      {/* NAVBAR CONTAINER - STYLE BOXY */}
       <div
-        className={`max-w-6xl mx-auto rounded-xl md:rounded-2xl border border-white/10 transition-all duration-300 relative z-[1001] ${
+        className={`max-w-6xl mx-auto rounded-none border-2 transition-all duration-300 relative z-[1001] ${
           scrolled || isOpen
-            ? "bg-[#030014]/80 backdrop-blur-xl shadow-2xl py-2 px-4"
-            : "bg-transparent py-3 px-5"
+            ? "bg-[#001219]/90 backdrop-blur-xl border-[#e9ff70]/50 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] py-2 px-6"
+            : "bg-transparent border-transparent py-4 px-6"
         }`}
       >
         <div className="flex justify-between items-center">
           <a href="#home" className="group">
-            <h1 className="text-xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-              ABIMANYU
+            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-[#e9ff70] uppercase drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)]">
+              FARHAN DENIEL
             </h1>
           </a>
 
-          <ul className="hidden md:flex gap-8 items-center">
+          {/* DESKTOP NAV */}
+          <ul className="hidden md:flex gap-10 items-center">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-slate-400 hover:text-white transition-all"
+                  className="text-xs font-black uppercase tracking-widest text-white/70 hover:text-[#e9ff70] transition-all relative group"
                 >
                   {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e9ff70] transition-all group-hover:w-full"></span>
                 </a>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div className="hidden md:block">
               <a
                 href="#contact"
-                className="px-5 py-2 bg-indigo-600/10 border border-indigo-500/50 text-indigo-400 text-xs font-bold rounded-xl"
+                className="px-6 py-2 bg-[#e9ff70] border-2 border-black text-[#001219] text-xs font-black uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
               >
                 Hire Me
               </a>
             </div>
 
             <button
-              className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors relative z-[1002]"
+              className="md:hidden text-[#e9ff70] p-2 bg-black/20 border-2 border-[#e9ff70]/20 hover:border-[#e9ff70] transition-all relative z-[1002]"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -74,24 +76,23 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* MOBILE MENU OVERLAY - BRUTALIST STYLE */}
       <div
-        className={`fixed inset-0 bg-[#030014]/98 backdrop-blur-3xl md:hidden transition-all duration-500 z-[1000] ${
+        className={`fixed inset-0 bg-[#005f73]/95 backdrop-blur-3xl md:hidden transition-all duration-500 z-[1000] ${
           isOpen
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0 pointer-events-none"
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0 pointer-events-none"
         }`}
       >
-        {/* Perubahan di sini: justify-start dan pt-24 untuk merapatkan jarak */}
-        <div className="flex flex-col items-center justify-start h-full pt-24 px-6 gap-5">
+        <div className="flex flex-col items-center justify-start h-full pt-28 px-8 gap-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="w-full max-w-sm py-4 px-6 rounded-2xl bg-white/5 border border-white/10 text-lg font-bold text-white flex items-center gap-4 transition-all active:scale-95"
+              className="w-full py-5 px-8 rounded-none bg-[#001219] border-2 border-[#e9ff70]/30 text-lg font-black text-white flex items-center gap-5 transition-all active:scale-95 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] uppercase tracking-tighter"
             >
-              <span className="p-2 bg-indigo-500/10 rounded-xl text-indigo-500">
+              <span className="p-2 bg-[#e9ff70] text-[#001219] rounded-none">
                 {link.icon}
               </span>
               {link.name}
@@ -100,7 +101,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setIsOpen(false)}
-            className="w-full max-w-[240px] mt-4 py-4 bg-indigo-600 text-white text-center font-bold rounded-2xl shadow-lg active:scale-95 transition-transform"
+            className="w-full mt-6 py-5 bg-[#e9ff70] text-[#001219] text-center font-black uppercase tracking-widest border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all"
           >
             Hire Me
           </a>

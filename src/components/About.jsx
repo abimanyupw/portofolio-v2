@@ -1,199 +1,214 @@
 import React from "react";
 import {
   User,
-  Code2,
-  Rocket,
-  BrainCircuit,
+  Camera,
+  Video,
+  Palette,
   Sparkles,
   Briefcase,
-  Calendar,
   GraduationCap,
+  Award,
 } from "lucide-react";
-
-import { SiLaravel, SiReact, SiTailwindcss } from "react-icons/si"; // Koleksi Simple Icons (Rekomendasi)
-
-// Warna khas Laravel
-// Warna khas React
 
 export default function About() {
   const experiences = [
     {
-      company: "Freelance",
-      role: "Front-End Developer",
+      company: "Abimanyu Studio",
+      role: "Lead Photographer",
       period: "2024 - Present",
-      desc: "Mengembangkan berbagai proyek web responsif menggunakan React dan Tailwind CSS untuk klien lokal.",
+      desc: "Menangani dokumentasi pernikahan, event korporat, dan photoshoot produk komersial dengan gaya sinematik.",
     },
     {
-      company: "Open Source Contributor",
-      role: "Contributor",
+      company: "Creative Media ID",
+      role: "Video Editor & Motion",
       period: "2023 - 2024",
-      desc: "Berkontribusi dalam pemeliharaan dan penambahan fitur pada berbagai repositori tools otomasi.",
+      desc: "Bertanggung jawab atas proses post-production video promosi sosial media dan color grading.",
     },
   ];
 
   const education = [
     {
-      school: "SMK Negeri 1 (Contoh)",
-      major: "Teknik Komputer dan Jaringan",
-      period: "2023 - 2026",
-      desc: "Mempelajari infrastruktur jaringan, administrasi server, dan dasar-dasar pengembangan perangkat lunak.",
+      school: "Politeknik Elektronika Negeri Surabaya",
+      major: "Telecommunication Engineering",
+      period: "2025 - Present",
+      desc: "Mendalami teknologi komunikasi yang mendukung transmisi data media digital kualitas tinggi.",
     },
     {
-      school: "Self-Taught / Online Courses",
-      major: "Fullstack Web Development",
-      period: "2023 - Present",
-      desc: "Mempelajari ekosistem JavaScript modern melalui platform seperti Dicoding, Udemy, dan dokumentasi resmi.",
+      school: "BuildWithAngga / Dicoding",
+      major: "UI/UX & Visual Design",
+      period: "2023 - 2024",
+      desc: "Sertifikasi dalam desain antarmuka pengguna dan prinsip estetika visual modern.",
     },
   ];
 
   return (
     <section
       id="about"
-      className="relative py-28 bg-[#030014] text-white overflow-hidden"
+      className="relative py-32 bg-[#005f73] text-white overflow-hidden"
     >
-      {/* Background Glow */}
-      <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-[10%] left-[-10%] w-[300px] h-[300px] bg-purple-600/10 blur-[120px] rounded-full"></div>
+      {/* Background Gradient Ornaments (Teal & Dark) */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#001219] via-[#005f73] to-[#0a9396]"></div>
+      <div className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-cyan-400/10 blur-[120px] rounded-full"></div>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* HEADER */}
-        <div className="flex flex-col items-center mb-16" data-aos="fade-up">
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
-            <Sparkles size={14} />
-            <span>Getting to Know Me</span>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          {/* KOLOM KIRI: IMAGE DENGAN STYLE PORTO (Border Putih Tebal) */}
+          <div className="relative group" data-aos="fade-right">
+            <div className="relative z-10 overflow-hidden border-[12px] border-white rotate-[-2deg] group-hover:rotate-0 transition-transform duration-700 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]">
+              <img
+                src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&q=80"
+                alt="My Creative Process"
+                className="w-full h-[500px] object-cover scale-110 group-hover:scale-100 transition-transform duration-700 grayscale-[0.2] group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#001219] via-transparent to-transparent opacity-60"></div>
+            </div>
+
+            {/* Badge Pengalaman (Kuning Stabilo) */}
+            <div className="absolute top-10 -left-6 bg-[#e9ff70] border-2 border-black p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] animate-float z-20">
+              <p className="text-3xl font-black text-[#001219]">2+</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-[#001219]">
+                Years Experience
+              </p>
+            </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center">
-            About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-              Me
-            </span>
-          </h2>
+
+          {/* KOLOM KANAN: TEXT CONTENT */}
+          <div className="space-y-8" data-aos="fade-left">
+            <div className="flex items-center gap-2 px-4 py-1.5 bg-[#e9ff70] text-[#001219] text-xs font-black uppercase tracking-widest w-fit shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+              <User size={14} />
+              <span>Behind The Lens</span>
+            </div>
+
+            <h2 className="text-5xl md:text-6xl font-black leading-[1.1] uppercase">
+              Visual Storyteller <br />
+              <span className="text-[#e9ff70] drop-shadow-[3px_3px_0px_rgba(0,0,0,0.3)]">
+                & Art Director.
+              </span>
+            </h2>
+
+            <p className="text-cyan-50 text-lg leading-relaxed font-medium bg-black/10 p-6 border-l-4 border-[#e9ff70] backdrop-blur-sm">
+              Halo! Saya{" "}
+              <span className="text-[#e9ff70] font-bold">Farhan Deniel</span>,
+              seorang kreator visual yang percaya bahwa setiap momen memiliki
+              cerita unik. Saya menggabungkan teknik fotografi profesional
+              dengan desain grafis modern untuk menciptakan karya yang ikonik.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4">
+              <SkillCard
+                icon={<Camera className="text-[#001219]" />}
+                title="Photography"
+                label="Shutter Expert"
+              />
+              <SkillCard
+                icon={<Video className="text-[#001219]" />}
+                title="Videography"
+                label="Storytelling"
+              />
+              <SkillCard
+                icon={<Palette className="text-[#001219]" />}
+                title="Graphic Design"
+                label="Visual Arts"
+              />
+              <SkillCard
+                icon={<Award className="text-[#001219]" />}
+                title="Post Production"
+                label="Color Grading"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* KOLOM KIRI: TEKS DESKRIPSI & STATS */}
-          <div className="space-y-12">
-            <div data-aos="fade-right">
-              <h3 className="text-4xl font-bold mb-6 flex items-center gap-3">
-                <User className="text-blue-500" size={24} />
-                Who Am I?
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-6 text-xl">
-                Saya adalah seorang siswa{" "}
-                <span className="text-white font-medium">
-                  Teknik Komputer dan Jaringan
-                </span>{" "}
-                yang memiliki minat besar dalam membangun ekosistem web modern.
-              </p>
-              <p className="text-gray-400 leading-relaxed text-xl">
-                Fokus utama saya saat ini adalah menciptakan pengalaman digital
-                yang inovatif melalui{" "}
-                <span className="text-blue-400">Laravel</span> dan{" "}
-                <span className="text-indigo-400">Figma</span>.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4" data-aos="fade-up">
-              <StatCard
-                icon={<Rocket className="text-blue-400" />}
-                val="01+"
-                label="Years Learning"
-              />
-              <StatCard
-                icon={<Code2 className="text-indigo-400" />}
-                val="10+"
-                label="Projects Built"
-              />
-              <StatCard
-                icon={<SiLaravel size={30} className="text-[#FF2D20]" />}
-                val="Laravel"
-                label="Main Framework"
-              />
-              <StatCard
-                icon={<Sparkles className="text-pink-400" />}
-                val="Figma"
-                label="UI Styling"
-              />
+        {/* TIMELINE SECTION (Style Kotak & Hard Shadow) */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* EXPERIENCE */}
+          <div
+            className="bg-white/5 border-2 border-white/20 p-8 md:p-12 backdrop-blur-sm shadow-[10px_10px_0px_0px_rgba(0,0,0,0.2)]"
+            data-aos="fade-up"
+          >
+            <h3 className="text-2xl font-black mb-10 flex items-center gap-3 uppercase text-[#e9ff70]">
+              <Briefcase size={24} /> Journey So Far
+            </h3>
+            <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#e9ff70]/30">
+              {experiences.map((exp, i) => (
+                <div key={i} className="relative pl-10 group">
+                  <div className="absolute left-0 top-2 w-[24px] h-[24px] bg-[#e9ff70] border-4 border-[#005f73] rounded-full z-10"></div>
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-black text-white uppercase group-hover:text-[#e9ff70] transition-colors">
+                      {exp.role}
+                    </h4>
+                    <span className="text-[10px] bg-white/10 px-2 py-1 font-mono text-cyan-200">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <p className="text-[#e9ff70] text-xs font-bold mb-2 uppercase italic">
+                    {exp.company}
+                  </p>
+                  <p className="text-cyan-50 text-sm leading-relaxed opacity-80 font-medium">
+                    {exp.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* KOLOM KANAN: TIMELINE (WORK & EDU) */}
-          <div className="grid grid-cols-1 gap-10">
-            {/* WORK EXPERIENCE */}
-            <div data-aos="fade-left">
-              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <Briefcase className="text-indigo-500" size={24} />
-                Work Experience
-              </h3>
-              <div className="space-y-6 border-l-2 border-white/10 ml-3 pl-6 relative">
-                {experiences.map((exp, index) => (
-                  <TimelineItem
-                    key={index}
-                    title={exp.role}
-                    subtitle={exp.company}
-                    period={exp.period}
-                    desc={exp.desc}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* EDUCATION */}
-            <div data-aos="fade-left" data-aos-delay="200">
-              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <GraduationCap className="text-blue-500" size={24} />
-                Education
-              </h3>
-              <div className="space-y-6 border-l-2 border-white/10 ml-3 pl-6 relative">
-                {education.map((edu, index) => (
-                  <TimelineItem
-                    key={index}
-                    title={edu.major}
-                    subtitle={edu.school}
-                    period={edu.period}
-                    desc={edu.desc}
-                  />
-                ))}
-              </div>
+          {/* EDUCATION */}
+          <div
+            className="bg-white/5 border-2 border-white/20 p-8 md:p-12 backdrop-blur-sm shadow-[10px_10px_0px_0px_rgba(0,0,0,0.2)]"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3 className="text-2xl font-black mb-10 flex items-center gap-3 uppercase text-[#e9ff70]">
+              <GraduationCap size={24} /> Knowledge
+            </h3>
+            <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#e9ff70]/30">
+              {education.map((edu, i) => (
+                <div key={i} className="relative pl-10 group">
+                  <div className="absolute left-0 top-2 w-[24px] h-[24px] bg-[#e9ff70] border-4 border-[#005f73] rounded-full z-10"></div>
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-black text-white uppercase group-hover:text-[#e9ff70] transition-colors">
+                      {edu.major}
+                    </h4>
+                    <span className="text-[10px] bg-white/10 px-2 py-1 font-mono text-cyan-200">
+                      {edu.period}
+                    </span>
+                  </div>
+                  <p className="text-[#e9ff70] text-xs font-bold mb-2 uppercase italic">
+                    {edu.school}
+                  </p>
+                  <p className="text-cyan-50 text-sm leading-relaxed opacity-80 font-medium">
+                    {edu.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }
 
-// Komponen Pembantu untuk Item Timeline
-function TimelineItem({ title, subtitle, period, desc }) {
+function SkillCard({ icon, title, label }) {
   return (
-    <div className="relative">
-      <div className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)] border-4 border-[#030014]"></div>
-      <div className="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-all group">
-        <div className="flex flex-col mb-2">
-          <div className="flex justify-between items-start gap-2">
-            <h4 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
-              {title}
-            </h4>
-            <span className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-full shrink-0">
-              <Calendar size={10} /> {period}
-            </span>
-          </div>
-          <p className="text-blue-400 text-sm font-medium mt-1">{subtitle}</p>
-        </div>
-        <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
-      </div>
-    </div>
-  );
-}
-
-function StatCard({ icon, val, label }) {
-  return (
-    <div className="group relative bg-white/5 border border-white/10 p-4 rounded-2xl transition-all hover:bg-white/10 hover:border-blue-500/50 hover:-translate-y-1">
-      <div className="mb-3 p-2 w-fit rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform">
+    <div className="p-4 bg-[#e9ff70] border-2 border-black hover:translate-y-[-4px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all group cursor-default">
+      <div className="mb-3 group-hover:scale-110 transition-transform">
         {icon}
       </div>
-      <h4 className="text-xl font-black text-white mb-0.5">{val}</h4>
-      <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">
+      <h4 className="text-sm font-black text-[#001219] mb-0.5 uppercase tracking-tighter">
+        {title}
+      </h4>
+      <p className="text-[10px] text-[#001219]/60 uppercase tracking-widest font-black">
         {label}
       </p>
     </div>

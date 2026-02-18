@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Sparkles,
-  Github,
   Instagram,
-  Linkedin,
-  Rocket,
-  Download,
+  Camera,
+  Video,
+  Palette,
+  ArrowRight,
 } from "lucide-react";
 
 export default function Hero() {
@@ -15,16 +15,15 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const jobs = [
-    "Front-End Developer",
-    "Network Engineer",
-    "UI/UX Designer",
-    "Fullstack Learner",
-    "Tech Enthusiast",
-    "Mobile Apps Developer",
+    "Professional Photographer",
+    "Cinematic Videographer",
+    "Graphic & Logo Designer",
+    "Social Media Specialist",
+    "Event Documentations",
   ];
   const period = 2000;
 
-  const tick = () => {
+  const tick = useCallback(() => {
     let i = loopNum % jobs.length;
     let fullText = jobs[i];
     let updatedText = isDeleting
@@ -45,7 +44,7 @@ export default function Hero() {
       setLoopNum(loopNum + 1);
       setTypingSpeed(150);
     }
-  };
+  }, [isDeleting, loopNum, text.length, jobs]);
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -53,144 +52,136 @@ export default function Hero() {
     }, typingSpeed);
 
     return () => clearInterval(ticker);
-  }, [text, typingSpeed]);
+  }, [tick, typingSpeed]);
 
   return (
     <section
       id="home"
-      // Perbaikan: Tambahkan scroll-mt agar saat diklik navigasi tidak terpotong navbar
-      // Sesuaikan pt (padding-top) agar konsisten di semua layar
-      className="relative min-h-screen flex items-center justify-center bg-[#030014] overflow-hidden pt-32 md:pt-36 lg:pt-20 scroll-mt-20"
+      className="relative min-h-screen flex items-center justify-center bg-[#005f73] overflow-hidden pt-32 md:pt-36 lg:pt-20 scroll-mt-20"
     >
-      {/* Background Glow Effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/20 blur-[150px] rounded-full"></div>
+      {/* BACKGROUND GRADIENT (Inspirasi: Teal ke Deep Navy dari Gambar Porto) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a9396] via-[#005f73] to-[#001219]"></div>
+
+      {/* Texture Overlay (Grainy effect seperti di desainmu) */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
 
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* KOLOM KIRI: TEKS & CALL TO ACTION */}
+        {/* KOLOM KIRI: KONTEN TETAP SAMA */}
         <div
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-duration="1200"
           className="flex flex-col justify-center text-left"
         >
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 w-fit">
+          {/* Badge: Kuning Stabilo Hard-Edge */}
+          <div className="flex items-center gap-2 px-4 py-1.5 bg-[#e9ff70] text-[#001219] text-[10px] md:text-xs font-black uppercase tracking-widest mb-6 w-fit shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]">
             <Sparkles size={14} />
-            <span>Ready to Innovate</span>
+            <span>Capturing Moments, Creating Art</span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-            Hi, I'm <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">
-              Abimanyu
+          <h1 className="text-5xl md:text-8xl font-black text-white mb-4 tracking-tighter leading-[0.9]">
+            CREATIVE <br />
+            {/* Gradasi Teks Kuning Stabilo */}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e9ff70] to-[#d4e662] drop-shadow-[2px_2px_0px_rgba(0,0,0,0.2)]">
+              VISIONARY
             </span>
           </h1>
 
           {/* AREA TYPEWRITER */}
-          <div className="h-8 md:h-12 mb-6">
-            <p className="text-xl md:text-3xl font-medium text-slate-300 border-r-4 border-indigo-500 pr-2 w-fit">
+          <div className="h-8 md:h-12 mb-8 border-l-4 border-[#e9ff70] pl-4">
+            <p className="text-xl md:text-3xl font-bold text-white uppercase italic tracking-tight">
               {text}
-              <span className="animate-blink">|</span>
+              <span className="animate-blink text-[#e9ff70]">|</span>
             </p>
           </div>
 
-          <p className="text-slate-400 max-w-lg text-sm md:text-lg mb-10 leading-relaxed">
-            Passionate about building modern, high-performance, and responsive
-            web applications with cutting-edge technologies.
+          <p className="text-cyan-50 max-w-lg text-sm md:text-lg mb-10 leading-relaxed font-medium">
+            Membantu brand dan momen berhargamu tampil lebih ikonik melalui
+            lensa profesional dan sentuhan{" "}
+            <span className="text-[#e9ff70]">desain grafis</span> yang
+            eksklusif.
           </p>
 
-          {/* TOMBOL AKSI */}
+          {/* TOMBOL AKSI: Style Kotak sesuai Gambar */}
           <div className="flex flex-wrap gap-4">
-            <a href="#project" className="contents">
-              <button className="flex-1 md:flex-none px-8 py-3 md:py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-600/25 active:scale-95 text-sm md:text-base">
-                <Rocket size={20} /> View Projects
+            <a href="#portfolio" className="contents">
+              <button className="flex-1 md:flex-none px-10 py-4 bg-[#e9ff70] text-[#001219] font-black rounded-none flex items-center justify-center gap-2 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] hover:translate-x-[-2px] hover:translate-y-[-2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] text-sm md:text-base">
+                Explore Work <ArrowRight size={20} />
               </button>
             </a>
 
-            <a
-              href="/CV_Abimanyu.pdf"
-              download="CV_Abimanyu.pdf"
-              className="contents"
-            >
-              <button className="flex-1 md:flex-none px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 text-sm md:text-base">
-                <Download size={20} /> CV
+            <a href="#contact" className="contents">
+              <button className="flex-1 md:flex-none px-10 py-4 bg-transparent border-2 border-white text-white font-black rounded-none flex items-center justify-center gap-2 transition-all hover:bg-white/10 active:scale-95 text-sm md:text-base shadow-[6px_6px_0px_0px_rgba(255,255,255,0.1)]">
+                Let's Talk
               </button>
             </a>
           </div>
 
           {/* SOSIAL MEDIA */}
-          <div className="flex gap-6 mt-12 justify-center md:justify-start">
-            <SocialIcon
-              icon={<Github />}
-              link="https://github.com/abimanyupw"
-            />
-            <SocialIcon
-              icon={<Instagram />}
-              link="https://instagram.com/abimanyupw_"
-            />
-            <SocialIcon
-              icon={<Linkedin />}
-              link="https://www.linkedin.com/in/abimanyu-pradipa-wisnu-101158346/"
-            />
+          <div className="flex gap-4 mt-12 justify-center md:justify-start">
+            <SocialIcon icon={<Instagram />} link="#" />
+            <SocialIcon icon={<Camera />} link="#" title="Photography" />
+            <SocialIcon icon={<Video />} link="#" title="Videography" />
+            <SocialIcon icon={<Palette />} link="#" title="Design" />
           </div>
         </div>
 
-        {/* KOLOM KANAN: FOTO PROFIL */}
+        {/* KOLOM KANAN: VISUAL (Frame Putih Tebal sesuai Gambar) */}
         <div
           className="flex justify-center lg:justify-end order-first lg:order-last mb-8 lg:mb-0"
-          data-aos="fade-left"
-          data-aos-duration="1200"
+          data-aos="zoom-in"
+          data-aos-duration="1500"
         >
-          <div className="relative group">
-            {/* Outer Glow Animation */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+          <div className="relative">
+            {/* Star Decor (Aksen Kuning Stabilo) */}
+            <div className="absolute -top-10 -left-10 w-24 h-24 bg-[#e9ff70] opacity-20 blur-xl rounded-full animate-pulse"></div>
 
-            {/* Photo Container */}
-            <div className="relative w-56 h-56 md:w-80 md:h-80 rounded-full border-4 border-[#030014] overflow-hidden bg-slate-900 shadow-2xl">
+            {/* Main Image Frame (Mirip Porto: Border Putih & Kaku) */}
+            <div className="relative w-64 h-[400px] md:w-80 md:h-[500px] overflow-hidden border-[10px] border-white shadow-[20px_20px_0px_0px_rgba(0,0,0,0.2)] rotate-2 hover:rotate-0 transition-transform duration-700">
               <img
-                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&q=80"
-                alt="Profile"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80"
+                alt="Visual Showcase"
+                className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-[#005f73]/10 mix-blend-multiply"></div>
+            </div>
+
+            {/* Floating Card: Design (Kuning Stabilo) */}
+            <div className="absolute top-10 -right-8 md:-right-12 bg-[#e9ff70] border-2 border-black p-3 shadow-lg rotate-12 hover:rotate-0 transition-all duration-500 group">
+              <Palette
+                className="text-black group-hover:scale-110 transition-transform"
+                size={28}
               />
             </div>
 
-            {/* Status Badge */}
-            <div className="absolute -bottom-2 -right-2 md:bottom-2 md:right-2 bg-white/10 backdrop-blur-xl border border-white/20 p-3 md:p-4 rounded-2xl shadow-2xl animate-bounce">
-              <div className="flex items-center gap-2 md:gap-3">
-                <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-tighter">
-                  Available for Work
-                </span>
-              </div>
+            {/* Floating Card: Video (Biru Teal) */}
+            <div className="absolute bottom-20 -left-8 md:-left-12 bg-white p-3 shadow-lg -rotate-12 hover:rotate-0 transition-all duration-500 group">
+              <Video
+                className="text-[#005f73] group-hover:scale-110 transition-transform"
+                size={28}
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Custom Styles untuk Kursor Mengetik */}
       <style>{`
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        .animate-blink {
-          animation: blink 0.7s infinite;
-          margin-left: 2px;
-          color: #6366f1;
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .animate-blink { animation: blink 0.7s infinite; }
       `}</style>
     </section>
   );
 }
 
-// Sub-komponen Social Icon
-function SocialIcon({ icon, link }) {
+function SocialIcon({ icon, link, title }) {
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-3 bg-white/5 border border-white/10 rounded-xl text-slate-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-500 transition-all duration-300"
+      title={title}
+      className="p-3 bg-white/5 border border-white/20 rounded-none text-white hover:text-[#001219] hover:bg-[#e9ff70] hover:border-transparent transition-all duration-500 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
     >
-      {React.cloneElement(icon, { size: 24 })}
+      {React.cloneElement(icon, { size: 22 })}
     </a>
   );
 }
